@@ -16,12 +16,17 @@ wheelMomentumX = wheelInertia * wheelSpeed * sind(angle);
 wheelMomentumY = wheelInertia * wheelSpeed * cosd(angle);
 platformMomentum = platformInertia * platformSpeed; %angular momentum, only applies in one direction
 
-platformSpeeds = zeros(1, 90);
+degreeRange = 90;
 
-for n = 1:90 %making wheel tilt 1 degree per loop
+platformSpeeds = zeros(1, degreeRange);
+
+for n = 1:degreeRange %making wheel tilt 1 degree per loop
     angle = n;
     wheelMomentumX = wheelInertia * wheelSpeed * sind(angle);
     wheelMomentumY = wheelInertia * wheelSpeed * cosd(angle);
+    %to consider for later: drag force applied rotationally
+    %torque = -8pi*R^3 * viscosity * angular velocity
+    %viscosity of air is 0.00018
     platformSpeeds(n) = (platformMomentum + wheelMomentumX) / platformInertia;
 end
 plot(platformSpeeds);
