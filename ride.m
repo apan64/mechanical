@@ -7,17 +7,27 @@ function stuff = ride()
     
     rideSpeed = rideSpeedRad * rideRadius;
     
-    bottoms = zeros(80);
-    tops = zeros(80);
+    bottoms = zeros(80, 80);
+    tops = zeros(80, 80);
     
-    gForce = rideSpeed^2 / rideRadius;
+    increment = .05;
     
-    for n = 1:80
-        bottoms(n) = gForce + (gravity * sin(n*pi/180));
-        tops(n) = gForce - (gravity * sin(n*pi/180));
+    for r = 1:80
+        rideSpeedRad = rideSpeedRad + increment;
+        rideSpeed = rideSpeedRad * rideRadius;
+        gForce = rideSpeed^2 / rideRadius;
+        for c = 1:80
+            bottoms(r, c) = gForce + (gravity * sin(c*pi/180));
+            tops(r, c) = gForce - (gravity * sin(c*pi/180));
+        end
     end
     
-    plot(bottoms./gravity);
-    hold on;
-    plot(tops./gravity);
+%     plot(bottoms./gravity);
+%     hold on;
+%     plot(tops./gravity);
+    h = pcolor(bottoms./gravity);
+    colorbar;
+    set(h, 'EdgeColor', 'none');
+    xlabel('Angle (degrees)');
+    ylabel('Speed (unrelated axis numbers lol)');
 end
