@@ -1,5 +1,5 @@
 function stuff = ride()
-    rideSpeedRad = 1.47; %rad/s
+    rideSpeedRad = 0; %rad/s
     gravity = 9.81; %m/s^2
     rideRadius = 15.25; %m
     personMass = 80.7; %kg, americans are fat
@@ -7,12 +7,12 @@ function stuff = ride()
     
     rideSpeed = rideSpeedRad * rideRadius;
     
-    bottoms = zeros(80, 80);
-    tops = zeros(80, 80);
+    bottoms = zeros(60, 80);
+    tops = zeros(60, 80);
     
-    increment = .05;
+    increment = .1;
     
-    for r = 1:80
+    for r = 1:60
         rideSpeedRad = rideSpeedRad + increment;
         rideSpeed = rideSpeedRad * rideRadius;
         gForce = rideSpeed^2 / rideRadius;
@@ -27,7 +27,11 @@ function stuff = ride()
 %     plot(tops./gravity);
     h = pcolor(bottoms./gravity);
     colorbar;
+    axis([1, 80, 1, 60]);
     set(h, 'EdgeColor', 'none');
     xlabel('Angle (degrees)');
-    ylabel('Speed (unrelated axis numbers lol)');
+    ylabel('Speed (radians/10 seconds)');
+    title('Heat Map of Maximum g-force');
+    hold on;
+    contour(bottoms./gravity, [17, 46.2], 'LineColor', [0, 0, 0]);
 end
