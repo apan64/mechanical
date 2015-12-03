@@ -1,3 +1,4 @@
+%Produces heatmap of various speeds and angles of the ride
 function stuff = ride()
     rideRPM = 0; %revolutions/minute
     rideSpeedRad = 0; %rad/s
