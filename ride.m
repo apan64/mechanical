@@ -20,4 +20,8 @@ function stuff = ride()
     plot(bottoms./gravity);
     hold on;
     plot(tops./gravity);
+    title('G-force on Riders');
+    xlabel('Angle (degrees)');
+    ylabel('G-force (9.81 m/s^2)');
+    legend('Maximum g-force (bottom of the ride)', 'Minimum g-force (top of the ride)');
 end
