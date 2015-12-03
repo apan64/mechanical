@@ -28,6 +28,7 @@ function stuff = ride()
 %     hold on;
 %     plot(tops./gravity);
     h = pcolor(bottoms./gravity);
+    colormap(cool);
     colorbar;
     axis([1, 80, 1, 120]);
     set(h, 'EdgeColor', 'none');
