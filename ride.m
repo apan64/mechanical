@@ -35,5 +35,5 @@ function stuff = ride()
     ylabel('Speed (RPM)');
     title('Heat Map of Maximum g-force');
     hold on;
-    contour(bottoms./gravity, [17, 46.2], 'LineColor', [0, 0, 0]);
+    contour(bottoms./gravity, [4, 17], 'LineColor', [0, 0, 0]);
 end
